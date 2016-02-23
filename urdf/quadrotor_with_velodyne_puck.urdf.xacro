@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<robot name="quadrotor" xmlns:xacro="http://www.ros.org/wiki/xacro">
+   
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+    
+    <!-- Included URDF Files -->
+    <xacro:include filename="$(find hector_quadrotor_description)/urdf/quadrotor_base.urdf.xacro" />
+    
+    <!-- Instantiate quadrotor_base_macro once (has no parameters atm) -->
+    <xacro:quadrotor_base_macro />
+    
+    <!-- Hokuyo UTM-30LX mounted upside down below the quadrotor body -->
+    <xacro:include filename="$(find hector_quadrotor_description)/urdf/velodyne_puck.xacro" />
+    <xacro:velodyne_puck name="laser0" parent="base_link" ros_topic="scan" update_rate="10" >
+      <origin xyz="0.0 0.0 -0.097" rpy="0 0 0"/>
+    </xacro:velodyne_puck>
+
+</robot>
+  
