@@ -8,7 +8,7 @@ class JoystickControl():
     def __init__(self):
         self.pub = rospy.Publisher("cmd_vel", Twist, queue_size=5)
         self.twist_msg = Twist()
-        self.scale = rospy.get_param("scale", 0.5)
+        self.scale = rospy.get_param("scale", 1.0)
         self.sub = rospy.Subscriber("joy", Joy, self.joy_callback)
         rate = rospy.Rate(30)
         while not rospy.is_shutdown():
